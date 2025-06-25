@@ -1,4 +1,6 @@
 
+import { Link } from 'react-router-dom';
+
 const Hero = () => {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center">
@@ -27,9 +29,12 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+            <Link 
+              to="/categories"
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 text-center"
+            >
               Browse Equipment
-            </button>
+            </Link>
             <button className="border-2 border-white hover:bg-white hover:text-black text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300">
               Learn More
             </button>

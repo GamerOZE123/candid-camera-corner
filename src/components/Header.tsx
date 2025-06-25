@@ -1,6 +1,7 @@
 
 import { Camera, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,16 +11,16 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <Camera className="h-8 w-8 text-orange-500" />
             <span className="text-2xl font-bold">LensRent</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#equipment" className="hover:text-orange-500 transition-colors">
+            <Link to="/categories" className="hover:text-orange-500 transition-colors">
               Equipment
-            </a>
+            </Link>
             <a href="#about" className="hover:text-orange-500 transition-colors">
               About
             </a>
@@ -44,9 +45,9 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t border-gray-700">
             <div className="flex flex-col space-y-4 pt-4">
-              <a href="#equipment" className="hover:text-orange-500 transition-colors">
+              <Link to="/categories" className="hover:text-orange-500 transition-colors">
                 Equipment
-              </a>
+              </Link>
               <a href="#about" className="hover:text-orange-500 transition-colors">
                 About
               </a>
