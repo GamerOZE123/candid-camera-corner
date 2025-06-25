@@ -7,7 +7,7 @@ const FeaturedEquipment = () => {
       id: 1,
       name: "Canon EOS R5",
       category: "Mirrorless Camera",
-      price: "$75/day",
+      price: "₹6,200/day",
       rating: 4.9,
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=600&fit=crop",
       features: ["45MP Full Frame", "8K Video", "In-Body Stabilization"]
@@ -16,7 +16,7 @@ const FeaturedEquipment = () => {
       id: 2,
       name: "Sony FX3",
       category: "Cinema Camera",
-      price: "$95/day",
+      price: "₹7,800/day",
       rating: 4.8,
       image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop",
       features: ["Full Frame 4K", "S-Cinetone", "Dual Base ISO"]
@@ -25,7 +25,7 @@ const FeaturedEquipment = () => {
       id: 3,
       name: "Canon RF 70-200mm f/2.8",
       category: "Telephoto Lens",
-      price: "$45/day",
+      price: "₹3,700/day",
       rating: 4.9,
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       features: ["Weather Sealed", "IS Technology", "L-Series Quality"]
@@ -34,7 +34,7 @@ const FeaturedEquipment = () => {
       id: 4,
       name: "DJI Ronin 4D",
       category: "Gimbal System",
-      price: "$120/day",
+      price: "₹9,900/day",
       rating: 4.7,
       image: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc?w=800&h=600&fit=crop",
       features: ["4-Axis Stabilization", "Built-in Monitor", "ActiveTrack Pro"]
