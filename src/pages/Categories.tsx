@@ -191,18 +191,45 @@ const Categories = () => {
     <div className="min-h-screen">
       <Header />
       
-      <div className="flex w-full">
-        {/* Left column with ad banner and sidebar */}
-        <div className="w-80 flex flex-col">
-          {/* Ad Banner */}
-          <div className="h-32 bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center text-primary-foreground">
-            <div className="text-center">
-              <div className="text-lg font-bold">Camera Deals</div>
-              <div className="text-sm opacity-90">Up to 30% off rentals</div>
+      {/* Hero Section - Featured Product */}
+      <section className="relative bg-black text-white">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-4xl font-bold mb-6">SONY FX3</h1>
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="bg-gray-800 p-4 rounded">
+                  <div className="text-2xl font-bold">35mm</div>
+                  <div className="text-sm text-gray-300">full frame</div>
+                  <div className="text-xs text-gray-400">high-sensitivity CMOS sensor</div>
+                </div>
+                <div className="bg-gray-800 p-4 rounded">
+                  <div className="text-2xl font-bold">4K</div>
+                  <div className="text-sm text-gray-300">High frame-rate</div>
+                  <div className="text-xs text-gray-400">120 fps</div>
+                </div>
+                <div className="bg-gray-800 p-4 rounded">
+                  <div className="text-2xl font-bold">715g</div>
+                  <div className="text-sm text-gray-300">Approx.</div>
+                  <div className="text-xs text-gray-400">body & battery & memory card</div>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <img 
+                src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=500&h=400&fit=crop" 
+                alt="Sony FX3" 
+                className="max-w-full h-auto"
+              />
             </div>
           </div>
-          
-          {/* Sidebar */}
+        </div>
+      </section>
+
+      {/* Content layout with sidebar and main content */}
+      <div className="flex w-full">
+        {/* Left sidebar */}
+        <div className="w-80">
           <SidebarProvider>
             <AppSidebar 
               selectedBrands={selectedBrands}
@@ -215,42 +242,6 @@ const Categories = () => {
         
         {/* Main content area */}
         <div className="flex-1">
-          
-          {/* Hero Section - Featured Product */}
-          <section className="relative bg-black text-white">
-            <div className="container mx-auto px-4 py-12">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h1 className="text-4xl font-bold mb-6">SONY FX3</h1>
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    <div className="bg-gray-800 p-4 rounded">
-                      <div className="text-2xl font-bold">35mm</div>
-                      <div className="text-sm text-gray-300">full frame</div>
-                      <div className="text-xs text-gray-400">high-sensitivity CMOS sensor</div>
-                    </div>
-                    <div className="bg-gray-800 p-4 rounded">
-                      <div className="text-2xl font-bold">4K</div>
-                      <div className="text-sm text-gray-300">High frame-rate</div>
-                      <div className="text-xs text-gray-400">120 fps</div>
-                    </div>
-                    <div className="bg-gray-800 p-4 rounded">
-                      <div className="text-2xl font-bold">715g</div>
-                      <div className="text-sm text-gray-300">Approx.</div>
-                      <div className="text-xs text-gray-400">body & battery & memory card</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-center">
-                  <img 
-                    src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=500&h=400&fit=crop" 
-                    alt="Sony FX3" 
-                    className="max-w-full h-auto"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Quick Category Navigation */}
           <section className="bg-gray-100 py-8">
             <div className="container mx-auto px-4">
@@ -275,7 +266,6 @@ const Categories = () => {
               </div>
             </div>
           </section>
-
           {/* Products Grid by Category */}
           <section className="py-12 bg-white">
             <div className="container mx-auto px-4">
