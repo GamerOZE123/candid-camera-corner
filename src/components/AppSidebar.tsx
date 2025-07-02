@@ -49,22 +49,27 @@ const categoryFilters = [
 
 export function AppSidebar({ selectedBrands, onBrandToggle, selectedCategories, onCategoryToggle }: AppSidebarProps) {
   return (
-    <Sidebar className="w-80 border-r border-gray-200">
-      <SidebarHeader className="border-b border-gray-200 p-6">
-        <div className="flex items-center gap-2">
-          <Filter className="h-5 w-5 text-orange-500" />
-          <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
+    <Sidebar className="w-80 bg-sidebar border-r border-sidebar-border">
+      <SidebarHeader className="border-b border-sidebar-border px-6 py-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-lg bg-primary/10">
+            <Filter className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold text-sidebar-foreground">Filters</h2>
+            <p className="text-xs text-sidebar-foreground/60">Refine your search</p>
+          </div>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="p-6">
+      <SidebarContent className="px-4 py-6">
         {/* Category Filters */}
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sm font-semibold text-gray-900 mb-3">
+          <SidebarGroupLabel className="text-sm font-semibold text-sidebar-foreground/70 mb-4 uppercase tracking-wide">
             Categories
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
+            <SidebarMenu className="space-y-2">
               {categoryFilters.map((category) => {
                 const IconComponent = category.icon;
                 const isSelected = selectedCategories.includes(category.name);
@@ -72,14 +77,14 @@ export function AppSidebar({ selectedBrands, onBrandToggle, selectedCategories, 
                   <SidebarMenuItem key={category.name}>
                     <SidebarMenuButton
                       onClick={() => onCategoryToggle(category.name)}
-                      className={`w-full justify-start p-3 rounded-lg transition-colors ${
+                      className={`w-full justify-start px-3 py-2.5 rounded-md transition-all duration-200 ${
                         isSelected 
-                          ? 'bg-orange-100 text-orange-700 hover:bg-orange-200' 
-                          : 'hover:bg-gray-100 text-gray-700'
+                          ? 'bg-primary text-primary-foreground shadow-sm' 
+                          : 'hover:bg-sidebar-accent text-sidebar-foreground hover:text-sidebar-accent-foreground'
                       }`}
                     >
-                      <IconComponent className="h-4 w-4 mr-3" />
-                      <span className="text-sm">{category.name}</span>
+                      <IconComponent className="h-4 w-4 mr-3 shrink-0" />
+                      <span className="text-sm font-medium truncate">{category.name}</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
@@ -90,7 +95,7 @@ export function AppSidebar({ selectedBrands, onBrandToggle, selectedCategories, 
 
         {/* Brand Filters */}
         <SidebarGroup className="mt-8">
-          <SidebarGroupLabel className="text-sm font-semibold text-gray-900 mb-3">
+          <SidebarGroupLabel className="text-sm font-semibold text-sidebar-foreground/70 mb-4 uppercase tracking-wide">
             Brands
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -101,14 +106,18 @@ export function AppSidebar({ selectedBrands, onBrandToggle, selectedCategories, 
                   <SidebarMenuItem key={brand.name}>
                     <SidebarMenuButton
                       onClick={() => onBrandToggle(brand.name)}
-                      className={`w-full justify-between p-3 rounded-lg transition-colors ${
+                      className={`w-full justify-between px-3 py-2.5 rounded-md transition-all duration-200 group ${
                         isSelected 
-                          ? 'bg-orange-100 text-orange-700 hover:bg-orange-200' 
-                          : 'hover:bg-gray-100 text-gray-700'
+                          ? 'bg-primary text-primary-foreground shadow-sm' 
+                          : 'hover:bg-sidebar-accent text-sidebar-foreground hover:text-sidebar-accent-foreground'
                       }`}
                     >
-                      <span className="text-sm font-medium">{brand.name}</span>
-                      <span className="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">
+                      <span className="text-sm font-medium truncate">{brand.name}</span>
+                      <span className={`text-xs px-2 py-0.5 rounded-full transition-colors ${
+                        isSelected
+                          ? 'bg-primary-foreground/20 text-primary-foreground'
+                          : 'bg-sidebar-border text-sidebar-foreground/70 group-hover:bg-sidebar-accent-foreground/20'
+                      }`}>
                         {brand.count}
                       </span>
                     </SidebarMenuButton>
@@ -121,13 +130,13 @@ export function AppSidebar({ selectedBrands, onBrandToggle, selectedCategories, 
 
         {/* Clear Filters */}
         {(selectedBrands.length > 0 || selectedCategories.length > 0) && (
-          <div className="mt-8 pt-6 border-t border-gray-200">
+          <div className="mt-8 pt-6 border-t border-sidebar-border">
             <button
               onClick={() => {
                 selectedBrands.forEach(brand => onBrandToggle(brand));
                 selectedCategories.forEach(category => onCategoryToggle(category));
               }}
-              className="w-full text-sm text-gray-600 hover:text-orange-600 transition-colors"
+              className="w-full text-sm text-sidebar-foreground/70 hover:text-primary transition-colors duration-200 font-medium py-2 px-3 rounded-md hover:bg-sidebar-accent"
             >
               Clear all filters
             </button>
