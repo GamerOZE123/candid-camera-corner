@@ -1,9 +1,31 @@
 
+import { useState } from 'react';
 import { Camera, Video, Mic, Lightbulb, Smartphone, Monitor, HardDrive, Grid3X3 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { AppSidebar } from '../components/AppSidebar';
+import { SidebarProvider, SidebarTrigger } from '../components/ui/sidebar';
 
 const Categories = () => {
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const handleBrandToggle = (brand: string) => {
+    setSelectedBrands(prev => 
+      prev.includes(brand) 
+        ? prev.filter(b => b !== brand)
+        : [...prev, brand]
+    );
+  };
+
+  const handleCategoryToggle = (category: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(category) 
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
+    );
+  };
+
   const categories = [
     {
       id: 1,
@@ -79,12 +101,29 @@ const Categories = () => {
     }
   ];
 
+  // Filter categories based on selected filters
+  const filteredCategories = categories.filter(category => {
+    if (selectedCategories.length > 0 && !selectedCategories.includes(category.name)) {
+      return false;
+    }
+    return true;
+  });
+
   return (
-    <div className="min-h-screen">
-      <Header />
-      
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] bg-gradient-to-br from-black via-gray-900 to-black flex items-center">
+    <SidebarProvider>
+      <div className="min-h-screen flex w-full">
+        <AppSidebar 
+          selectedBrands={selectedBrands}
+          onBrandToggle={handleBrandToggle}
+          selectedCategories={selectedCategories}
+          onCategoryToggle={handleCategoryToggle}
+        />
+        
+        <div className="flex-1">
+          <Header />
+          
+          {/* Hero Section */}
+          <section className="relative min-h-[60vh] bg-gradient-to-br from-black via-gray-900 to-black flex items-center">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 opacity-10">
           <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:50px_50px]"></div>
@@ -136,7 +175,7 @@ const Categories = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {categories.map((category) => {
+            {filteredCategories.map((category) => {
               const IconComponent = category.icon;
               return (
                 <div
@@ -243,8 +282,10 @@ const Categories = () => {
         </div>
       </section>
 
-      <Footer />
-    </div>
+          <Footer />
+        </div>
+      </div>
+    </SidebarProvider>
   );
 };
 
