@@ -188,17 +188,33 @@ const Categories = () => {
   }, {} as Record<string, typeof products>);
 
   return (
-    <SidebarProvider>
-      <div className="min-h-screen flex w-full">
-        <AppSidebar 
-          selectedBrands={selectedBrands}
-          onBrandToggle={handleBrandToggle}
-          selectedCategories={selectedCategories}
-          onCategoryToggle={handleCategoryToggle}
-        />
+    <div className="min-h-screen">
+      <Header />
+      
+      <div className="flex w-full">
+        {/* Left column with ad banner and sidebar */}
+        <div className="w-80 flex flex-col">
+          {/* Ad Banner */}
+          <div className="h-32 bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center text-primary-foreground">
+            <div className="text-center">
+              <div className="text-lg font-bold">Camera Deals</div>
+              <div className="text-sm opacity-90">Up to 30% off rentals</div>
+            </div>
+          </div>
+          
+          {/* Sidebar */}
+          <SidebarProvider>
+            <AppSidebar 
+              selectedBrands={selectedBrands}
+              onBrandToggle={handleBrandToggle}
+              selectedCategories={selectedCategories}
+              onCategoryToggle={handleCategoryToggle}
+            />
+          </SidebarProvider>
+        </div>
         
+        {/* Main content area */}
         <div className="flex-1">
-          <Header />
           
           {/* Hero Section - Featured Product */}
           <section className="relative bg-black text-white">
@@ -325,7 +341,7 @@ const Categories = () => {
           <Footer />
         </div>
       </div>
-    </SidebarProvider>
+    </div>
   );
 };
 
